@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b6f8f">
+<title>دواؤك بأمان | Pilot عبر GitHub Pages</title>
+<style>
+:root{
+ --navy:#0d4f70;--blue:#0b79a5;--teal:#0f9b91;--green:#4ba66b;
+ --bg:#f3f7fa;--surface:#fff;--ink:#17364a;--muted:#6f8592;--line:#dce8ee;
+ --red:#c94c46;--amber:#c28a18;--shadow:0 12px 32px rgba(22,62,84,.09);
+}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Tahoma,Arial,sans-serif;color:var(--ink)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{max-width:1180px;margin:auto;padding:18px 18px 80px}
+.header{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px 16px;box-shadow:var(--shadow);position:sticky;top:10px;z-index:20}
+.logo{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,var(--teal),var(--blue));display:grid;place-items:center;color:#fff;font-weight:900;line-height:1}
+.brand{flex:1}.brand h1{margin:0;color:var(--navy);font-size:23px}.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:#fff;padding:10px 12px;border-radius:12px;color:var(--navy);font-weight:800}.tab.active{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff;border:0}
+.screen{display:none;margin-top:16px}.screen.active{display:block}
+.hero{background:linear-gradient(135deg,#0d4f70,#0f9b91);color:#fff;padding:24px;border-radius:24px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.6fr .6fr;gap:20px}
+.hero h2{margin:0 0 8px;font-size:30px}.hero p{margin:0;line-height:1.8;color:#e8f5f5}.hero-rx{background:rgba(255,255,255,.95);border-radius:20px;display:grid;place-items:center;color:var(--teal);font-size:40px;font-weight:900}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 5px 18px rgba(22,62,84,.05)}
+.service{min-height:135px;display:flex;flex-direction:column;justify-content:space-between}.service h3{margin:8px 0 4px;color:var(--navy)}.service p{margin:0;color:var(--muted);font-size:12px;line-height:1.6}.icon{font-size:28px}
+.btn{border:0;border-radius:12px;padding:10px 13px;font-weight:800}.primary{background:linear-gradient(135deg,var(--blue),var(--teal));color:#fff}.secondary{background:#edf5f7;color:var(--navy)}.danger{background:#fff0ef;color:#9f3d38}.success{background:#edf8f0;color:#2c7448}
+.form{max-width:760px}.field{margin-bottom:12px}.field label{display:block;font-weight:800;font-size:12px;margin-bottom:6px}.control{width:100%;border:1px solid #cddde5;border-radius:12px;padding:11px 12px;background:#fff}.control:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(15,155,145,.08)}textarea.control{min-height:105px}
+.notice{margin-top:12px;padding:12px;border-radius:13px;background:#fff8e8;border:1px solid #efdfb9;font-size:12px;line-height:1.7}
+.safe{margin-top:12px;padding:12px;border-radius:13px;background:#edf9f1;border:1px solid #cbe8d4;font-size:12px}
+.queue-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:14px}.list{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}.list h3{padding:15px;margin:0;border-bottom:1px solid var(--line);color:var(--navy)}
+.case{padding:13px 15px;border-bottom:1px solid #edf2f5;cursor:pointer}.case:hover,.case.active{background:#f4fbfb}.case-top{display:flex;align-items:center;gap:7px}.case-id{font-weight:900;color:var(--navy)}.badge{padding:4px 7px;border-radius:999px;font-size:10px;font-weight:800}.high{background:#fff1dd;color:#9a6512}.critical{background:#fdeceb;color:#a53b36}.normal{background:#edf8f1;color:#2c7448}.case p{margin:6px 0 0;color:var(--muted);font-size:11px}
+.detail{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px}.workflow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}.step{border:1px solid var(--line);border-radius:11px;padding:9px;text-align:center;font-size:10px}.step.on{background:#eaf8f4;border-color:#bfe3d6;color:#23724e;font-weight:800}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.kpi{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px}.kpi b{display:block;font-size:26px;color:var(--navy)}.kpi span{font-size:11px;color:var(--muted)}
+.table{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.row{display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr;padding:11px 14px;border-bottom:1px solid #edf2f5;font-size:12px}.row.head{background:#f5f9fb;font-weight:900;color:var(--navy)}
+.motto{text-align:center;color:var(--green);font-weight:900;margin:18px 0 0}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-rx{display:none}.grid{grid-template-columns:1fr 1fr}.queue-grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.app{padding:10px 10px 70px}.header{align-items:flex-start;position:static}.tabs{display:grid;grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.row{grid-template-columns:1fr 1fr}.row.head{display:none}}
+</style>
+</head>
+<body>
+<div style="background:#8a1c1c;color:white;text-align:center;padding:10px;font-weight:800;position:sticky;top:0;z-index:9999">
+Pilot مؤقت — GitHub Pages / Build 0.2 — لا تُدخل أي بيانات تعريفية للمستفيد
+</div>
+<div class="app">
+<header class="header">
+  <div class="logo">Rx<br>صحي</div>
+  <div class="brand"><h1>دواؤك بأمان</h1><p>مستشفى جازان العام • قسم الصيدلية</p></div>
+  <div class="tabs">
+    <button class="tab active" onclick="showScreen('beneficiary',this)">واجهة المستفيد</button>
+    <button class="tab" onclick="showScreen('pharmacist',this)">بوابة الصيدلي</button>
+    <button class="tab" onclick="showScreen('dashboard',this)">Dashboard</button>
+  </div>
+</header>
+
+<section id="beneficiary" class="screen active">
+  <div class="hero">
+    <div><h2>معلومة أوضح، استخدام أكثر أمانًا</h2><p>ابحث عن دوائك، راجع أدويتك، أو اطرح سؤالًا دوائيًا. الحالات التي تحتاج تقييمًا فرديًا تُحال للصيدلي.</p></div>
+    <div class="hero-rx">Rx</div>
+  </div>
+
+  <div class="grid">
+    <div class="card service"><div><div class="icon">💊</div><h3>معلومات عن دوائي</h3><p>الاستخدام، الحفظ، الطعام، الأعراض الجانبية.</p></div><button class="btn secondary">فتح</button></div>
+    <div class="card service"><div><div class="icon">📷</div><h3>تصوير الدواء</h3><p>التعرف على العبوة مع قواعد عدم التخمين.</p></div><button class="btn secondary">فتح</button></div>
+    <div class="card service"><div><div class="icon">🧾</div><h3>مراجعة جميع أدويتي</h3><p>إنشاء حالة مراجعة دوائية وإرسالها للصيدلي عند الحاجة.</p></div><button class="btn primary" onclick="document.getElementById('reviewForm').scrollIntoView({behavior:'smooth'})">ابدأ المراجعة</button></div>
+  </div>
+
+  <div id="reviewForm" class="card form" style="margin-top:14px">
+    <h3 style="margin-top:0;color:var(--navy)">Medication Review</h3>
+    <div class="field"><label>الدواء الأول</label><input id="d1" class="control" value="Megamox 156 mg/5 mL"></div>
+    <div class="field"><label>الدواء الثاني</label><input id="d2" class="control" value="Amoxil"></div>
+    <div class="field"><label>ملاحظة اختيارية</label><textarea id="beneficiaryNote" class="control" placeholder="اكتب سؤالك أو ملاحظتك دون بيانات تعريفية"></textarea></div>
+    <button class="btn primary" onclick="submitCase()">إرسال للمراجعة الصيدلانية</button>
+    <div class="notice">لا توقف أو تغيّر العلاج تلقائيًا. التنبيهات المهمة تمر بمراجعة الصيدلي قبل اعتبارها تدخلًا سريريًا.</div>
+    <div id="sentMsg" class="safe" style="display:none">✓ تم إرسال الحالة إلى بوابة الصيدلي برقم <b id="newCaseId"></b>.</div>
+  </div>
+</section>
+
+<section id="pharmacist" class="screen">
+  <div class="kpis">
+    <div class="kpi"><b id="pendingKpi">0</b><span>حالات بانتظار المراجعة</span></div>
+    <div class="kpi"><b id="confirmedKpi">0</b><span>حالات مؤكدة</span></div>
+    <div class="kpi"><b id="interventionKpi">0</b><span>تدخلات موثقة</span></div>
+    <div class="kpi"><b id="resolvedKpi">0</b><span>حالات مغلقة</span></div>
+  </div>
+  <div class="queue-grid" style="margin-top:14px">
+    <div class="list"><h3>الحالات الواردة</h3><div id="queue"></div></div>
+    <div class="detail">
+      <h3 id="caseTitle" style="margin-top:0;color:var(--navy)">اختر حالة للمراجعة</h3>
+      <div id="caseBody" style="color:var(--muted);font-size:12px">ستظهر تفاصيل الحالة هنا.</div>
+      <div id="reviewArea" style="display:none">
+        <div class="workflow"><div class="step on">System Alert</div><div class="step on">Pharmacist Verification</div><div id="s3" class="step">Intervention</div><div id="s4" class="step">Outcome</div></div>
+        <div class="field"><label>نتيجة التحقق</label><select id="verification" class="control"><option>Confirmed</option><option>Not Confirmed</option><option>Needs More Information</option></select></div>
+        <div class="field"><label>التدخل</label><select id="intervention" class="control"><option>تثقيف المستفيد</option><option>إحالة للعيادة الافتراضية</option><option>التواصل مع الطبيب</option><option>لا يوجد تدخل مطلوب</option></select></div>
+        <div class="field"><label>النتيجة</label><select id="outcome" class="control"><option>تم حل المشكلة</option><option>تمت الإحالة والمتابعة</option><option>لا يوجد تدخل مطلوب</option><option>بانتظار معلومات إضافية</option></select></div>
+        <div class="field"><label>ملاحظات الصيدلي</label><textarea id="pharmNote" class="control"></textarea></div>
+        <button class="btn primary" onclick="completeReview()">حفظ المراجعة</button>
+        <div id="reviewDone" class="safe" style="display:none">✓ تم حفظ المراجعة وتحديث مؤشرات الـDashboard.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard" class="screen">
+  <div class="kpis">
+    <div class="kpi"><b id="dashSessions">0</b><span>إجمالي الحالات</span></div>
+    <div class="kpi"><b id="dashPending">0</b><span>بانتظار الصيدلي</span></div>
+    <div class="kpi"><b id="dashConfirmed">0</b><span>Confirmed</span></div>
+    <div class="kpi"><b id="dashResolved">0</b><span>Resolved</span></div>
+  </div>
+  <div class="table">
+    <div class="row head"><div>Case ID</div><div>الحالة</div><div>التحقق</div><div>النتيجة</div></div>
+    <div id="dashRows"></div>
+  </div>
+  <div class="card" style="margin-top:14px"><b style="color:var(--navy)">منطق القياس</b><p style="font-size:12px;color:var(--muted);line-height:1.8">System Alert وحده لا يُسجل كتدخل ناجح. يتم احتساب Confirmed وIntervention وOutcome فقط بعد توثيق الصيدلي.</p></div>
+</section>
+
+<div class="motto">مستفيد واعٍ • علاج آمن • مجتمع أكثر صحة</div>
+</div>
+
+<script>
+let cases = JSON.parse(localStorage.getItem('db_cases')||'[]');
+let currentId=null;
+if(cases.length===0){
+ cases=[{id:'DB-1042',d1:'Megamox 156 mg/5 mL',d2:'Amoxil',note:'',status:'Pending',priority:'critical',verification:'',intervention:'',outcome:''}];
+ save();
+}
+function save(){localStorage.setItem('db_cases',JSON.stringify(cases));renderAll()}
+function showScreen(id,btn){
+ document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function submitCase(){
+ const id='DB-'+Math.floor(1050+Math.random()*800);
+ cases.unshift({id,d1:document.getElementById('d1').value,d2:document.getElementById('d2').value,note:document.getElementById('beneficiaryNote').value,status:'Pending',priority:'high',verification:'',intervention:'',outcome:''});
+ document.getElementById('newCaseId').textContent=id;document.getElementById('sentMsg').style.display='block';save();
+}
+function renderQueue(){
+ const q=document.getElementById('queue');q.innerHTML='';
+ cases.forEach(c=>{
+  const div=document.createElement('div');div.className='case'+(currentId===c.id?' active':'');
+  const cls=c.status==='Pending'?(c.priority==='critical'?'critical':'high'):'normal';
+  div.innerHTML=`<div class="case-top"><span class="case-id">${c.id}</span><span class="badge ${cls}">${c.status==='Pending'?'بانتظار المراجعة':'مغلقة'}</span></div><p>${c.d1} + ${c.d2}</p>`;
+  div.onclick=()=>selectCase(c.id);q.appendChild(div);
+ })
+}
+function selectCase(id){
+ currentId=id;const c=cases.find(x=>x.id===id);
+ document.getElementById('caseTitle').textContent=c.id;
+ document.getElementById('caseBody').innerHTML=`<b>الأدوية:</b><br>${c.d1}<br>${c.d2}<br><br><b>ملاحظة المستفيد:</b><br>${c.note||'لا توجد'}<br><br><b>تنبيه النظام:</b><br>Potential duplication / clinically relevant interaction requires pharmacist verification.`;
+ document.getElementById('reviewArea').style.display='block';document.getElementById('reviewDone').style.display='none';
+ if(c.verification) document.getElementById('verification').value=c.verification;
+ renderQueue();
+}
+function completeReview(){
+ const c=cases.find(x=>x.id===currentId); if(!c)return;
+ const verification=document.getElementById('verification').value;
+ const intervention=document.getElementById('intervention').value;
+ const outcome=document.getElementById('outcome').value;
+ if(verification==='Needs More Information' && intervention!=='لا يوجد تدخل مطلوب'){
+   alert('لا يمكن توثيق تدخل سريري نهائي قبل اكتمال المعلومات والتحقق. اختر «لا يوجد تدخل مطلوب» أو استكمل المعلومات.');
+   return;
+ }
+ c.verification=verification;c.intervention=intervention;c.outcome=outcome;c.status='Resolved';
+ document.getElementById('s3').classList.add('on');document.getElementById('s4').classList.add('on');document.getElementById('reviewDone').style.display='block';save();
+}
+function renderDashboard(){
+ const total=cases.length,pending=cases.filter(c=>c.status==='Pending').length,confirmed=cases.filter(c=>c.verification==='Confirmed').length,resolved=cases.filter(c=>c.status==='Resolved').length;
+ document.getElementById('pendingKpi').textContent=pending;document.getElementById('confirmedKpi').textContent=confirmed;
+ document.getElementById('interventionKpi').textContent=cases.filter(c=>c.intervention && c.intervention!=='لا يوجد تدخل مطلوب').length;document.getElementById('resolvedKpi').textContent=resolved;
+ document.getElementById('dashSessions').textContent=total;document.getElementById('dashPending').textContent=pending;document.getElementById('dashConfirmed').textContent=confirmed;document.getElementById('dashResolved').textContent=resolved;
+ const rows=document.getElementById('dashRows');rows.innerHTML='';
+ cases.forEach(c=>{const r=document.createElement('div');r.className='row';r.innerHTML=`<div>${c.id}</div><div>${c.status}</div><div>${c.verification||'—'}</div><div>${c.outcome||'—'}</div>`;rows.appendChild(r)})
+}
+function renderAll(){renderQueue();renderDashboard()}
+renderAll();
+
+function resetDryRun(){
+  if(!confirm('إعادة جميع بيانات التجربة الداخلية إلى الحالة الافتراضية؟')) return;
+  localStorage.removeItem('db_cases');
+  localStorage.removeItem('dawakRatings');
+  location.reload();
+}
+
+</script>
+</body>
+</html>
